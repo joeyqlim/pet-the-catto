@@ -10,26 +10,44 @@
 </head>
 
 <body>
-  <div id="wrapper">
-    <div id="intro">
-      <p>himbs demands pets. do you accempt?</p>
-    </div>
+  
+<div id="wrapper">
+  <!-- intro will disappear after user presses button -->
+  <div id="intro"><br><br>
+    <p>himbs demands pets. do you accempt?</p>
+    <button id="start-btn" onclick="randomPart()">i accempt</button>
+  </div>
 
+  <!-- div will display after user presses button. shows whose turn it is to pet the kitty -->
+  <div id="players"></div>
+
+  <div id="kitty">
     <div class="ears">
-      <div id="left-ear"></div>
-      <div id="right-ear"></div>
-    </div>
+      <div id="left-ear"></div> 
 
-    <div id="head"></div>
+      <div id="right-ear"></div>
     
+    </div>
+    
+    <div id="head"></div>
+  
       <div id="left-eye"></div>
       <div id="right-eye"></div>
-
+  
+      <div id="nose"></div>
+  
     <div id="body"></div>
-
+  
     <div id="tail"></div>
-    
   </div>
+
+  <!-- div will display when the game is over. shows which player won. -->
+  <div id="result"></div>
+
+  <!-- button to replay game will appear when the game is over -->
+  <button id="replay-btn" onclick="">try again</button>
+  
+</div>
   
   <script src="script.js"></script>
 </body>

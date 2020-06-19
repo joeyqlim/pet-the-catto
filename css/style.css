@@ -11,7 +11,22 @@ html {
 
 #wrapper {
   max-width: 500px;
-  margin: 20px auto; }
+  margin: auto;
+  margin-top: -60px;
+  text-align: center; }
+
+#kitty {
+  padding-left: 50px;
+  margin-top: -100px; }
+
+#intro {
+  font-size: 3rem; }
+
+#start-btn {
+  padding: 8px; }
+
+#replay-btn {
+  visibility: hidden; }
 
 #head {
   width: 400px;
@@ -19,31 +34,44 @@ html {
   background-color: #d8d8d8;
   border-radius: 200px;
   display: flex;
-  flex-flow: row; }
+  flex-flow: row;
+  cursor: pointer; }
 
 #left-eye {
   background-color: #323333;
-  height: 30px;
-  width: 30px;
+  height: 60px;
+  width: 60px;
   border-style: solid;
-  border-width: 6px;
+  border-width: 10px;
   border-radius: 100px;
   border-color: white;
   position: relative;
-  bottom: 250px;
-  left: 110px; }
+  bottom: 280px;
+  left: 80px;
+  cursor: pointer; }
 
 #right-eye {
   background-color: #323333;
-  height: 30px;
-  width: 30px;
+  height: 60px;
+  width: 60px;
   border-style: solid;
-  border-width: 6px;
+  border-width: 10px;
   border-radius: 100px;
   border-color: white;
   position: relative;
-  bottom: 290px;
-  left: 240px; }
+  bottom: 355px;
+  left: 250px;
+  cursor: pointer; }
+
+#nose {
+  background-color: #dea4d0;
+  height: 35px;
+  width: 45px;
+  border-radius: 50%;
+  position: relative;
+  bottom: 325px;
+  left: 181px;
+  cursor: pointer; }
 
 .ears {
   display: flex; }
@@ -53,11 +81,16 @@ html {
     border-left: 80px solid transparent;
     border-right: 80px solid transparent;
     border-bottom: 130px solid #d8d8d8;
-    transform: rotate(325deg) translateY(60px) translateX(-80px); }
+    transform: rotate(325deg) translateY(60px) translateX(-80px);
+    cursor: pointer; }
   .ears #right-ear {
     width: 0;
     height: 0;
     border-left: 80px solid transparent;
     border-right: 80px solid transparent;
     border-bottom: 130px solid #d8d8d8;
-    transform: rotate(160deg) translateY(-140px) translateX(-70px); }
+    transform: rotate(160deg) translateY(-160px) translateX(-70px);
+    cursor: pointer; }
+
+.game-over {
+  margin-top: -160px; }
