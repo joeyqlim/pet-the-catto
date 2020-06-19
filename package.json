@@ -1,0 +1,14 @@
+{
+  "name": "kitty",
+  "version": "1.0.0",
+  "description": "game about petting a cat",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+  },
+  "author": "joey",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.14.1"
+  }
+}
