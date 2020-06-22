@@ -10,16 +10,24 @@
 </head>
 
 <body>
-  
+<div id="score">
+  <p><b>Current score</b></p>
+  <p id="p1-score">Player 1: 0</p>
+  <p id="p2-score">Player 2: 0</p>
+</div>
+
 <div id="wrapper">
+  <div id="top-message">
   <!-- intro will disappear after user presses button -->
-  <div id="intro"><br><br>
+  <div id="intro">
     <p>himbs demands pets. do you accempt?</p>
     <button id="start-btn" onclick="randomPart()">i accempt</button>
   </div>
 
   <!-- div will display after user presses button. shows whose turn it is to pet the kitty -->
   <div id="players"></div>
+  </div>
+  
 
   <div id="kitty">
     <div class="ears">
@@ -45,7 +53,7 @@
   <div id="result"></div>
 
   <!-- button to replay game will appear when the game is over -->
-  <button id="replay-btn" onclick="">try again</button>
+  <button id="replay-btn" onclick="replayGame()">try again</button>
   
 </div>
   
