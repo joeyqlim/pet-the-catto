@@ -1,4 +1,5 @@
-// to do: animations, body, get random cat facts, styling. try and clean up code. add reset score function.
+// to do: animations, body, get random cat facts, styling. store player names.
+
 // keep track of whose turn it is
 let turn = 0;
 
@@ -7,7 +8,7 @@ const players = {
   one: {
     score: 0,
     message() {
-      playersText.innerText = `Go forth, Player 1!`
+      playersText.innerText = `It's Player 1's turn!`
     },
     win() {
       this.score++;
@@ -56,31 +57,33 @@ const rightEye = document.getElementById('right-eye');
 const nose = document.getElementById('nose');
 
 const catParts = [head, leftEar, rightEar, leftEye, rightEye, nose];
+let badPart;
+
 
 // function to attach event listeners to all cat parts and a "woops" class to a random part 
 function randomPart(){
-  let badPart;
-
-  playersText.style.visibility = "visible";
-
-  showPlayers();
-
+  
+  index = Math.floor(Math.random() * catParts.length);
+  badPart = catParts[index]; 
+  badPart.classList.add("woops");
+  
   catParts.forEach((part) => {
     part.addEventListener('click', checkPart)
   });
 
-  index = Math.floor(Math.random() * catParts.length+1);
-  badPart = catParts[index]; // ISSUE: Takes time to load and might bug the game.
-  badPart.classList.add("woops");
+  playersText.style.visibility = "visible";
+
+  showPlayers();
 
   console.log(document.body) // see where randomPart is
 }
 
 // function to check if clicked part contains woops class
 function checkPart(e){
+  turn++;
+
   showPlayers();
   let selected = e.target;
-  turn++;
 
   if (selected.classList.contains("woops")) {
     if (turn % 2 === 0) {
@@ -122,8 +125,7 @@ function showPlayers() {
 // replay function
 function replayGame() {
   turn = 0;
-  playersText.style.visibility = "hidden";
-  introText.style.visibility = "visible";
-  document.getElementById('result').removeChild(gameOver);
+  randomPart();
   replayBtn.style.visibility = "hidden";
+  document.getElementById('result').removeChild(gameOver);
 }
