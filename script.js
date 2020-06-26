@@ -1,7 +1,9 @@
-// to do: animations, body, get random cat facts, styling. store player names.
+// to do: animations, body, get random cat facts, styling. store player names. make player class. 
 
 // keep track of whose turn it is
-let turn = 0;
+let turn = 1;
+
+let winningScore = 2; // create a reset function when whole round is over
 
 // keep track of player scores
 const players = {
@@ -80,30 +82,67 @@ function randomPart(){
 
 // function to check if clicked part contains woops class
 function checkPart(e){
-  turn++;
 
   showPlayers();
+
   let selected = e.target;
 
+  selected.removeEventListener('click', checkPart);
+  selected.addEventListener('click', alreadyClicked);
+
   if (selected.classList.contains("woops")) {
-    if (turn % 2 === 0) {
+    if (turn === 1) {
       players.one.lose();
       players.two.win();
-    } else{
+    } else {
       players.one.win();
       players.two.lose();
     }
+
+    if (players.one.score === winningScore) {
+      Swal.fire({
+        title: '<h2 style="color:#000">Player 1 won!</h2>',
+        background: '#fff',
+        imageUrl: '/img/scritch.gif',
+        imageWidth: 220,
+        imageHeight: 220,
+        showConfirmButton: false,
+        showCloseButton: true
+      });
+    } else if (players.two.score === winningScore) {
+      Swal.fire({
+        title: '<h2 style="color:#000">Player 2 won!</h2>',
+        background: '#fff',
+        imageUrl: '/img/scritch.gif',
+        imageWidth: 220,
+        imageHeight: 220,
+        showConfirmButton: false,
+        showCloseButton: true
+      });
+    }
+
     // remove players turn text
     playersText.style.visibility = "hidden";
     // display game over message
     displayGameOver();
     // remove event listeners
     catParts.forEach((part) => {
-      part.removeEventListener('click', checkPart)
+      part.removeEventListener('click', checkPart);
+      part.removeEventListener('click', alreadyClicked);
     });
     // remove woops class from bad part
     selected.classList.remove("woops");
   }
+}
+
+// already clicked function
+function alreadyClicked() {
+  Swal.fire({
+    title: '<h4 style="color:#000">Kitty wants to be petted somewhere else! Click anywhere to continue</h4>',
+    background: '#fff',
+    backdrop: true,
+    showConfirmButton: false
+  });
 }
 
 // game over display
@@ -114,9 +153,13 @@ function displayGameOver() {
 
 // show players function
 function showPlayers() {
-  turn % 2 === 0
-  ? players.one.message()
-  : players.two.message();
+  if (turn === 1) {
+    players.one.message();
+    turn = 2;
+  } else {
+    players.two.message();
+    turn = 1;
+  }
 
   scoreBox.style.visibility = "visible";
   introText.style.visibility = "hidden";
@@ -124,7 +167,7 @@ function showPlayers() {
 
 // replay function
 function replayGame() {
-  turn = 0;
+  turn = 1;
   randomPart();
   replayBtn.style.visibility = "hidden";
   document.getElementById('result').removeChild(gameOver);
