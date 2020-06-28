@@ -3,7 +3,7 @@
 // keep track of whose turn it is
 let turn = 1;
 
-let winningScore = 2; // create a reset function when whole round is over
+let winningScore = 3; // create a reset function when whole round is over
 
 // keep track of player scores
 const players = {
@@ -94,9 +94,27 @@ function checkPart(e){
     if (turn === 1) {
       players.one.lose();
       players.two.win();
+      Swal.fire({
+        title: '<h2>Stop mean to kitty, Player 1!</h2>',
+        background: '#fff',
+        imageUrl: '/img/stopmean.jpg',
+        imageWidth: 400,
+        imageHeight: 400,
+        showConfirmButton: false,
+        showCloseButton: true
+      });
     } else {
       players.one.win();
       players.two.lose();
+      Swal.fire({
+        title: '<h2>Stop mean to kitty, Player 2!</h2>',
+        background: '#fff',
+        imageUrl: '/img/stopmean.jpg',
+        imageWidth: 400,
+        imageHeight: 400,
+        showConfirmButton: false,
+        showCloseButton: true
+      });
     }
 
     if (players.one.score === winningScore) {
@@ -138,7 +156,8 @@ function checkPart(e){
 // already clicked function
 function alreadyClicked() {
   Swal.fire({
-    title: '<h4 style="color:#000">Kitty wants to be petted somewhere else! Click anywhere to continue</h4>',
+    title: 'Kitty wants to be petted somewhere else!',
+    text: 'Click anywhere to continue',
     background: '#fff',
     backdrop: true,
     showConfirmButton: false

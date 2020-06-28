@@ -136,6 +136,10 @@ button {
   perspective: 1000px;
 }
 
+#left-ear:hover {
+  animation: wiggle .9s;
+}
+
 @keyframes shake {
   10%, 90% {
     transform: translate3d(-1px, 0, 0);
@@ -151,6 +155,12 @@ button {
 
   40%, 60% {
     transform: translate3d(4px, 0, 0);
+  }
+}
+
+@keyframes wiggle {
+  50% {
+    transform: translateY(125px) scale(.7);
   }
 }
 
