@@ -1,21 +1,11 @@
-// to do: animations, body, get random cat facts, styling. store player names. make player class. 
-Swal.fire({
-  title: '<h2>Stop mean to kitty, Player 1!</h2>',
-  background: '#fff',
-  imageUrl: '/img/stopmean.jpg',
-  imageWidth: 400,
-  imageHeight: 400,
-  showConfirmButton: false,
-  backdrop: true,
-  timer: 1000,
-  position: 'top-end',
-});
+// to do: body, get random cat facts, UX. store player names. 
+
 // keep track of whose turn it is
 let turn = 1;
 
-let winningScore = 3; // create a reset function when whole round is over
+let winningScore = 2;
 
-// keep track of player scores
+// player objects
 const players = {
   one: {
     score: 0,
@@ -28,6 +18,10 @@ const players = {
     },
     lose() {
       gameOver.innerText = `Player 1 made chonky A N G Y`;
+      playerOneScore.innerText = `Player 1: ${this.score}`;
+    },
+    resetScore() {
+      this.score = 0;
       playerOneScore.innerText = `Player 1: ${this.score}`;
     }
   },
@@ -43,6 +37,10 @@ const players = {
     lose() {
       gameOver.innerText = `Player 2 made chonky A N G Y`;
       playerTwoScore.innerText = `Player 2: ${this.score}`
+    },
+    resetScore() {
+      this.score = 0;
+      playerTwoScore.innerText = `Player 2: ${this.score}`;
     }
   }
 }
@@ -57,8 +55,7 @@ const playerOneScore = document.getElementById('p1-score');
 const playerTwoScore = document.getElementById('p2-score');
 
 const gameOver = document.createElement('div');
-  gameOver.innerText = `Game over! CHONK is A N G Y`
-  gameOver.classList.add('game-over')
+gameOver.classList.add('game-over')
 
 // cat parts
 const head = document.getElementById('head'); 
@@ -86,8 +83,6 @@ function randomPart(){
   playersText.style.visibility = "visible";
 
   showPlayers();
-
-  console.log(document.body) // see where randomPart is
 }
 
 // function to check if clicked part contains woops class
@@ -112,7 +107,7 @@ function checkPart(e){
         imageHeight: 400,
         showConfirmButton: false,
         backdrop: true,
-        timer: 1000,
+        timer: 1100,
         position: 'top-end'
       });
     } else {
@@ -126,14 +121,14 @@ function checkPart(e){
         imageHeight: 400,
         showConfirmButton: false,
         backdrop: true,
-        timer: 1000,
+        timer: 1100,
         position: 'top-end'
       });
     }
 
     if (players.one.score === winningScore) {
       Swal.fire({
-        title: '<h2 style="color:#000">Player 1 won!</h2>',
+        title: '<h2 style="color:#000">Player 1 won more rounds!</h2>',
         background: '#fff',
         imageUrl: '/img/scritch.gif',
         imageWidth: 220,
@@ -143,7 +138,7 @@ function checkPart(e){
       });
     } else if (players.two.score === winningScore) {
       Swal.fire({
-        title: '<h2 style="color:#000">Player 2 won!</h2>',
+        title: '<h2 style="color:#000">Player 2 won more rounds!</h2>',
         background: '#fff',
         imageUrl: '/img/scritch.gif',
         imageWidth: 220,
@@ -180,8 +175,13 @@ function alreadyClicked() {
 
 // game over display
 function displayGameOver() {
-  document.getElementById('result').appendChild(gameOver);
-  replayBtn.style.visibility = "visible";
+  if (players.one.score === winningScore || players.two.score === winningScore) {
+    $('#reset-btn').show();
+    document.getElementById('result').appendChild(gameOver);
+  } else {
+    document.getElementById('result').appendChild(gameOver);
+    $('#replay-btn').show();
+  }
 }
 
 // show players function
@@ -194,14 +194,25 @@ function showPlayers() {
     turn = 1;
   }
 
-  scoreBox.style.visibility = "visible";
-  introText.style.visibility = "hidden";
+  $('#intro').hide();
+  $('#score').show();
 }
 
 // replay function
 function replayGame() {
   turn = 1;
   randomPart();
-  replayBtn.style.visibility = "hidden";
+  $('#replay-btn').hide();
+  document.getElementById('result').removeChild(gameOver);
+}
+
+// reset function
+function resetGame() {
+  $('#reset-btn').hide();
+  $('#intro').show();
+  $('#score').hide();
+  players.one.resetScore();
+  players.two.resetScore();
+  turn = 1;
   document.getElementById('result').removeChild(gameOver);
 }

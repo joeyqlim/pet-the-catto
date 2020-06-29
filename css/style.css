@@ -29,7 +29,12 @@ button {
   font-size: 2.5rem; }
 
 #replay-btn {
-  visibility: hidden; }
+  display: none;
+  margin: 10px auto; }
+
+#reset-btn {
+  display: none;
+  margin: 10px auto; }
 
 #head {
   width: 400px;
@@ -90,7 +95,7 @@ button {
     transform: rotate(160deg) translateY(-160px) translateX(-70px); }
 
 #score {
-  visibility: hidden;
+  display: none;
   font-size: 1.5rem;
   padding: 20px 20px 0 20px; }
 

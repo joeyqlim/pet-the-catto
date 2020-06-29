@@ -42,7 +42,13 @@ button {
 }
 
 #replay-btn {
-  visibility: hidden;
+  display: none;
+  margin: 10px auto;
+}
+
+#reset-btn {
+  display: none;
+  margin: 10px auto;
 }
 
 #head {
@@ -119,7 +125,7 @@ button {
 }
 
 #score {
-  visibility: hidden;
+  display: none;
   font-size: 1.5rem;
   padding: 20px 20px 0 20px;
 }
