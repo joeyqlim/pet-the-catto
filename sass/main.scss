@@ -130,14 +130,19 @@ button {
 }
 
 #nose:hover {
-  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  perspective: 1000px;
+  animation: shake 700ms;
 }
 
 #left-ear:hover {
-  animation: wiggle .9s;
+  animation: wiggleLeft 700ms;
+}
+
+#right-ear:hover {
+  animation: wiggleRight 700ms;
+}
+
+#left-eye:hover, #right-eye:hover {
+  animation: blink 100ms;
 }
 
 @keyframes shake {
@@ -158,11 +163,22 @@ button {
   }
 }
 
-@keyframes wiggle {
+@keyframes wiggleLeft {
   50% {
-    transform: translateY(125px) scale(.7);
+    transform: rotate(328deg) translateY(83px) translateX(-65px)
   }
 }
 
+@keyframes wiggleRight {
+  50% {
+    transform: rotate(155deg) translateY(-160px) translateX(-50px) scale(.9);
+  }
+}
+
+@keyframes blink {
+  from { opacity: 1.0; }
+  50% { opacity: 0; }
+  to { opacity: 1.0; }
+}
 
 

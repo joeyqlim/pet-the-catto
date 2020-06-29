@@ -1,5 +1,15 @@
 // to do: animations, body, get random cat facts, styling. store player names. make player class. 
-
+Swal.fire({
+  title: '<h2>Stop mean to kitty, Player 1!</h2>',
+  background: '#fff',
+  imageUrl: '/img/stopmean.jpg',
+  imageWidth: 400,
+  imageHeight: 400,
+  showConfirmButton: false,
+  backdrop: true,
+  timer: 1000,
+  position: 'top-end',
+});
 // keep track of whose turn it is
 let turn = 1;
 
@@ -101,7 +111,9 @@ function checkPart(e){
         imageWidth: 400,
         imageHeight: 400,
         showConfirmButton: false,
-        showCloseButton: true
+        backdrop: true,
+        timer: 1000,
+        position: 'top-end'
       });
     } else {
       players.one.win();
@@ -113,7 +125,9 @@ function checkPart(e){
         imageWidth: 400,
         imageHeight: 400,
         showConfirmButton: false,
-        showCloseButton: true
+        backdrop: true,
+        timer: 1000,
+        position: 'top-end'
       });
     }
 
