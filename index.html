@@ -3,59 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>  
   <link rel="stylesheet" href="css/style.css">
 
   <title>petto the catto</title>
 </head>
 
 <body>
-<div id="score">
-  <p><b>Current score</b></p>
-  <p id="p1-score">Player 1: 0</p>
-  <p id="p2-score">Player 2: 0</p>
-</div>
-
-<div id="wrapper">
-  <div id="top-message">
-  <!-- intro will disappear after user presses button -->
-  <div id="intro">
-    <p>himbs demands pets. do you accempt?</p>
-    <button id="start-btn" onclick="randomPart()">we accempt</button>
-  </div>
-
-  <!-- div will display after user presses button. shows whose turn it is to pet the kitty -->
-  <div id="players"></div>
-  </div>
-  
-
-  <div id="kitty">
-    <div class="ears">
-      <div id="left-ear""></div> 
-
-      <div id="right-ear"></div>
-    
+  <div class="grid-container">
+    <div class="score-text">
+      <div id="score">
+        <p><b>Current score</b></p>
+        <p id="p1-score">Player 1: 0</p>
+        <p id="p2-score">Player 2: 0</p>
+      </div> 
     </div>
+
+    <div id="top-message">
+      <div id="intro">
+        <p>himbs demands pets. do you accempt?</p>
+        <button id="start-btn" onclick="randomPart()"><i class="fa fa-paw"></i> we accempt</button>
+      </div>
+      
+      <div id="players"></div>
+    </div>
+  
+    <div id="kitty">
+      <div class="ears">
+        <div id="left-ear""></div> 
+        <div id="right-ear"></div>
+      </div>
+      
+      <div id="head"></div>
     
-    <div id="head"></div>
+        <div id="left-eye"></div>
+        <div id="right-eye"></div>
+    
+        <div id="nose"></div>
+    
+      <div id="body"></div>
+    
+      <div id="tail"></div>
+    </div>
   
-      <div id="left-eye"></div>
-      <div id="right-eye"></div>
-  
-      <div id="nose"></div>
-  
-    <div id="body"></div>
-  
-    <div id="tail"></div>
+    <div id="bottom-message">
+      <div id="result"></div>
+
+      <button id="replay-btn" onclick="replayGame()"><i class="fa fa-paw"></i> try again</button>
+      <button id="reset-btn" onclick="resetGame()"><i class="fa fa-paw"></i> reset game</button>
+    </div>
+
   </div>
-
-  <!-- div will display when the game is over. shows which player won. -->
-  <div id="result"></div>
-
-  <!-- button to replay game will appear when the game is over -->
-  <button id="replay-btn" onclick="replayGame()">try again</button>
-  <button id="reset-btn" onclick="resetGame()">reset game</button>
   
-</div>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
