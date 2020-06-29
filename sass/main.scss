@@ -21,17 +21,19 @@ html {
 }
 
 button {
-  padding: 8px 26px;
-  margin: 12px;
-  font-size: 1.8rem;
+  padding: 6px 22px;
+  margin: 8px;
+  font-size: 1rem;
   border-radius: 100px;
   border: 3px solid black;
+  cursor: pointer;
 }
 
 .grid-container {
   display: grid;
-  grid-template-rows: 10% 10% 70% 10%;
+  grid-template-rows: 6% 8% 48% 10%;
   justify-content: center;
+  max-height: 800px;
 }
 
 #score {
@@ -39,15 +41,17 @@ button {
 }
 
 .score-text {
-  font-size: 1.5rem;
+  font-size: 1rem;
   padding: 10px 0;
   text-align: left;
+  margin-bottom: 450px;
 }
 
 #top-message {
-  font-size: 2rem;
-  padding-top: 85px;
+  font-size: 1.3rem;
   text-align: center;
+  height: 30px;
+  margin-top: 50px;
 }
 
 #bottom-message {
@@ -56,13 +60,15 @@ button {
 }
 
 .game-over {
-  font-size: 2rem;
+  font-size: 1.3rem;
 }
 
 #kitty {
   max-height: 600px;
   max-width: 700px;
   margin: 0 auto;
+  margin-bottom: -100px;
+  margin-top: -50px;
 }
 
 #replay-btn {
@@ -76,8 +82,8 @@ button {
 }
 
 #head {
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
   background-color: $color-primary;
   border-radius: 200px;
 
@@ -87,8 +93,22 @@ button {
 
 #left-eye{
   background-color: $color-eyes;
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
+  border-style: solid;
+  border-width: 10px;
+  border-radius: 100px;
+  border-color: white;
+
+  position: relative;
+  bottom: 220px;
+  left: 53px;
+}
+
+#right-eye{
+  background-color: $color-eyes;
+  height: 40px;
+  width: 40px;
   border-style: solid;
   border-width: 10px;
   border-radius: 100px;
@@ -96,32 +116,18 @@ button {
 
   position: relative;
   bottom: 280px;
-  left: 80px;
-}
-
-#right-eye{
-  background-color: $color-eyes;
-  height: 60px;
-  width: 60px;
-  border-style: solid;
-  border-width: 10px;
-  border-radius: 100px;
-  border-color: white;
-
-  position: relative;
-  bottom: 355px;
-  left: 250px;
+  left: 196px;
 }
 
 #nose {
   background-color: $color-nose;
-  height: 35px;
-  width: 45px;
+  height: 25px;
+  width: 32px;
   border-radius: 50%;
 
   position: relative;
-  bottom: 325px;
-  left: 181px;
+  bottom: 256px;
+  left: 138px;
 }
 
 .ears {
@@ -129,22 +135,22 @@ button {
   #left-ear {
     width: 0;
     height: 0;
-    border-left: 80px solid transparent;
-    border-right: 80px solid transparent;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
     
-    border-bottom: 130px solid $color-primary;
-    transform: rotate(325deg) translateY(60px) translateX(-80px);
+    border-bottom: 120px solid $color-primary;
+    transform: rotate(319deg) translateY(42px) translateX(-87px);
   }
   
   #right-ear {
     width: 0;
     height: 0;
-    border-left: 80px solid transparent;
-    border-right: 80px solid transparent;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
     
-    border-bottom: 130px solid $color-primary;
+    border-bottom: 120px solid $color-primary;
   
-    transform: rotate(160deg) translateY(-160px) translateX(-70px);
+    transform: rotate(166deg) translateY(-147px) translateX(-60px);
   }
 }
 
@@ -184,13 +190,13 @@ button {
 
 @keyframes wiggleLeft {
   50% {
-    transform: rotate(328deg) translateY(83px) translateX(-65px)
+    transform: rotate(315deg) translateY(42px) translateX(-87px) scale(.9);
   }
 }
 
 @keyframes wiggleRight {
   50% {
-    transform: rotate(155deg) translateY(-160px) translateX(-50px) scale(.9);
+    transform: rotate(169deg) translateY(-147px) translateX(-60px) scale(.9);
   }
 }
 

@@ -100,11 +100,11 @@ function checkPart(e){
       players.one.lose();
       players.two.win();
       Swal.fire({
-        title: '<h2>Stop mean to kitty, Player 1!</h2>',
+        title: 'Stop mean to kitty, Player 1!',
         background: '#fff',
-        imageUrl: '/img/stopmean.jpg',
-        imageWidth: 400,
-        imageHeight: 400,
+        imageUrl: 'https://i.imgur.com/cLWmuzO.jpg',
+        imageWidth: 300,
+        imageHeight: 300,
         showConfirmButton: false,
         backdrop: true,
         timer: 1100,
@@ -114,11 +114,11 @@ function checkPart(e){
       players.one.win();
       players.two.lose();
       Swal.fire({
-        title: '<h2>Stop mean to kitty, Player 2!</h2>',
+        title: 'Stop mean to kitty, Player 2!',
         background: '#fff',
-        imageUrl: '/img/stopmean.jpg',
-        imageWidth: 400,
-        imageHeight: 400,
+        imageUrl: 'https://i.imgur.com/cLWmuzO.jpg',
+        imageWidth: 300,
+        imageHeight: 300,
         showConfirmButton: false,
         backdrop: true,
         timer: 1100,
@@ -128,7 +128,7 @@ function checkPart(e){
 
     if (players.one.score === winningScore) {
       Swal.fire({
-        title: '<h2 style="color:#000">Player 1 won more rounds!</h2>',
+        title: 'CHONK chooses Player 1!',
         background: '#fff',
         imageUrl: '/img/scritch.gif',
         imageWidth: 220,
@@ -138,7 +138,7 @@ function checkPart(e){
       });
     } else if (players.two.score === winningScore) {
       Swal.fire({
-        title: '<h2 style="color:#000">Player 2 won more rounds!</h2>',
+        title: 'CHONK chooses Player 2!',
         background: '#fff',
         imageUrl: '/img/scritch.gif',
         imageWidth: 220,
@@ -166,9 +166,8 @@ function checkPart(e){
 function alreadyClicked() {
   Swal.fire({
     title: 'Kitty wants to be petted somewhere else!',
-    text: 'Click anywhere to continue',
     background: '#fff',
-    backdrop: true,
+    timer: 800,
     showConfirmButton: false
   });
 }
