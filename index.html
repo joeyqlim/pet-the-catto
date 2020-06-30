@@ -24,33 +24,27 @@
       
       <h4>Click on a chonk to find out more:</h4>
         <img class="cat-thumbnail" id="baby" src="/img/baby.png" alt="baby kitty" onclick="babyInfo()">
-        <img class="cat-thumbnail" id="catto" src="/img/catto.png" alt="baby kitty" onclick="cattoInfo()">
-        <img class="cat-thumbnail" id="chonk" src="/img/chonk.png" alt="baby kitty" onclick="chonkInfo()">
+        <img class="cat-thumbnail" id="catto" src="/img/catto.png" alt="catto" onclick="cattoInfo()">
+        <img class="cat-thumbnail" id="chonk" src="/img/chonk.png" alt="chonk" onclick="chonkInfo()">
 
       <h4>Whomst you be?</h4>
       <label for="names">Hooman 1:</label>
         <input type="text" value="Baby Girl Lisa" id="p1-name" placeholder="Baby Girl Lisa">
       <label for="names">Hooman 2:</label>
         <input type="text" value="No Neck Ed" id="p2-name" placeholder="No Neck Ed">
-    <button id="load-btn" onclick="loadGame()">Start Game</button>
+    <button id="load-btn" onclick="loadGame()"><i class="fa fa-paw"></i> Start Game</button>
     </div>
 
   <div class="grid-container">
     <div class="score-text">
       <div id="score">
-        <p><b>Current score</b></p>
+        <p><b>CURRENT SCORE</b></p>
         <p id="p1-score"></p>
         <p id="p2-score"></p>
       </div> 
     </div>
 
     <div id="top-message">
-      <div id="intro">
-        <p>himbs demands pets. do you accempt?
-        </p>
-        <button id="start-btn" onclick="randomPart()"><i class="fa fa-paw"></i> we accempt</button>
-      </div>
-      
       <div id="players"></div>
     </div>
   

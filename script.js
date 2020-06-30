@@ -1,10 +1,10 @@
 // to do: body, get random cat facts, UX. store player names. 
 
-// store turn, winning score, names
+// store turn, winning score
 let turn = 1;
-let winningScore = 2; // to change this for different levels
+let winningScore; // to change this for different levels
 
-// player objects
+// PLAYER OBJECT
 const players = {
   one: {
     score: 0,
@@ -58,6 +58,10 @@ const playerTwoScore = document.getElementById('p2-score');
 const gameOver = document.createElement('div');
 gameOver.classList.add('game-over')
 
+const scoreToWin = document.createElement('p');
+scoreToWin.classList.add('winning-score');
+scoreBox.appendChild(scoreToWin);
+
 // cat parts
 const head = document.getElementById('head'); 
 const leftEar = document.getElementById('left-ear');
@@ -71,6 +75,16 @@ const rightMouth = document.getElementById('mouth-right');
 const catParts = [head, leftEar, rightEar, leftEye, rightEye, nose, leftMouth, rightMouth];
 let badPart;
 
+// click title to reload page
+$('.title').click(function() {
+  location.reload();
+});
+
+// select all text in input box
+$("input[type='text']").on("click", function () {
+  $(this).select();
+});
+
 // information about cats functions
 function babyInfo(){
   Swal.fire({
@@ -78,7 +92,6 @@ function babyInfo(){
     text: 'So smol. Easily appeased. Just hit 3 points to win! 1 spot to watch out for.',
     imageUrl: '/img/baby.png',
     imageWidth: 220,
-    imageHeight: 220,
     showConfirmButton: false,
     showCloseButton: true
   });
@@ -90,7 +103,6 @@ function cattoInfo(){
     text: 'Slightly grompy. Reach 5 points to win himb over. 2 spots to watch out for.',
     imageUrl: '/img/catto.png',
     imageWidth: 220,
-    imageHeight: 220,
     showConfirmButton: false,
     showCloseButton: true
   });
@@ -102,10 +114,26 @@ function chonkInfo(){
     text: 'He is LORGE. Player must hit 10 points to win. 3 spots to watch out for.',
     imageUrl: '/img/chonk.png',
     imageWidth: 220,
-    imageHeight: 220,
     showConfirmButton: false,
     showCloseButton: true
   });
+}
+
+// change cat colour function
+function blackCat() {
+  $('#left-ear').css("border-bottom", "120px solid black");
+  $('#right-ear').css("border-bottom", "120px solid black");
+  $('#head').css("background-color", "black");
+  $('#left-eye').css("border-color", "rgb(5, 114, 5)");
+  $('#right-eye').css("border-color", "rgb(5, 114, 5)");
+  $('#nose').css("background-color", "#c05a8a");
+}
+
+function orangeCat() {
+  $('#left-ear').css("border-bottom", "120px solid #dda861");
+  $('#right-ear').css("border-bottom", "120px solid #dda861");
+  $('#head').css("background-color", "#dda861");
+  $('#nose').css("background-color", "#323333");
 }
 
 // load game function
@@ -114,12 +142,28 @@ function loadGame(){
   players.two.name = $('#p2-name').val();
   $('.start-screen').hide();
   $('.grid-container').css("display", "grid");
-  $('#intro').show();
+
+  // set difficulty level
+  if ($('select').val() === "baby"){
+    randomPart();
+    winningScore = 3;
+  } else if ($('select').val() === "catto"){
+    twoRandomParts();
+    blackCat();
+    winningScore = 5;
+  } else if ($('select').val() === "chonk"){
+    threeRandomParts();
+    orangeCat();
+    winningScore = 10;
+  }
+  // display the players turn text
+  $('#top-message').show();
+  showPlayers();
+  scoreToWin.innerText = `Score to win: ${winningScore}`
 }
 
 // function to attach event listeners to all cat parts and a "woops" class to a random part 
 function randomPart(){
-  
   index = Math.floor(Math.random() * catParts.length);
   badPart = catParts[index]; 
   badPart.classList.add("woops");
@@ -127,10 +171,17 @@ function randomPart(){
   catParts.forEach((part) => {
     part.addEventListener('click', checkPart)
   });
+}
 
-  playersText.style.visibility = "visible";
+function twoRandomParts() {
+  randomPart();
+  randomPart();
+}
 
-  showPlayers();
+function threeRandomParts() {
+  randomPart();
+  randomPart();
+  randomPart();
 }
 
 // function to check if clicked part contains woops class
@@ -148,37 +199,41 @@ function checkPart(e){
       players.one.lose();
       players.two.win();
       Swal.fire({
-        title: 'Stop mean to kitty, Player 1!',
+        title: `stop mean to kitty, ${players.one.name}!`,
         background: '#fff',
         imageUrl: 'https://i.imgur.com/cLWmuzO.jpg',
         imageWidth: 300,
         imageHeight: 300,
         showConfirmButton: false,
         backdrop: true,
-        timer: 1100,
-        position: 'top-end'
+        timer: 1300,
       });
+
+      $('#top-message').css("visibility", "hidden");
+
     } else {
       players.one.win();
       players.two.lose();
       Swal.fire({
-        title: 'Stop mean to kitty, Player 2!',
+        title: `stop mean to kitty, ${players.two.name}!`,
         background: '#fff',
         imageUrl: 'https://i.imgur.com/cLWmuzO.jpg',
         imageWidth: 300,
         imageHeight: 300,
         showConfirmButton: false,
         backdrop: true,
-        timer: 1100,
-        position: 'top-end'
+        timer: 1300,
       });
+
+      $('#top-message').css("visibility", "hidden");
+
     }
 
     if (players.one.score === winningScore) {
       Swal.fire({
-        title: 'CHONK chooses Player 1!',
+        title: `${$('select').val()} thanks ${players.one.name}`,
         background: '#fff',
-        imageUrl: '/img/scritch.gif',
+        imageUrl: '/img/roller.png',
         imageWidth: 220,
         imageHeight: 220,
         showConfirmButton: false,
@@ -186,9 +241,9 @@ function checkPart(e){
       });
     } else if (players.two.score === winningScore) {
       Swal.fire({
-        title: 'CHONK chooses Player 2!',
+        title: `${$('select').val()} thanks ${players.two.name}`,
         background: '#fff',
-        imageUrl: '/img/scritch.gif',
+        imageUrl: '/img/roller.png',
         imageWidth: 220,
         imageHeight: 220,
         showConfirmButton: false,
@@ -196,8 +251,6 @@ function checkPart(e){
       });
     }
 
-    // remove players turn text
-    playersText.style.visibility = "hidden";
     // display game over message
     displayGameOver();
     // remove event listeners
@@ -216,7 +269,8 @@ function alreadyClicked() {
     title: 'Kitty wants to be petted somewhere else!',
     background: '#fff',
     timer: 800,
-    showConfirmButton: false
+    showConfirmButton: false,
+    showCloseButton: true
   });
 }
 
@@ -231,7 +285,7 @@ function displayGameOver() {
   }
 }
 
-// show players function
+// function to show whose turn it is and player scores 
 function showPlayers() {
   if (turn === 1) {
     players.one.message();
@@ -251,8 +305,20 @@ function showPlayers() {
 // replay function
 function replayGame() {
   turn = 1;
-  randomPart();
+
+  if ($('select').val() === "baby"){
+    randomPart();
+  } else if ($('select').val() === "catto"){
+    twoRandomParts();
+  } else if ($('select').val() === "chonk"){
+    threeRandomParts();
+  }
+
   $('#replay-btn').hide();
+  $('#top-message').show();
+  $('#top-message').css("visibility", "visible");
+
+  showPlayers();
   document.getElementById('result').removeChild(gameOver);
 }
 

@@ -27,9 +27,15 @@ input {
   padding: 10px;
   margin-bottom: 10px; }
 
+.winning-score {
+  margin-top: 10px;
+  text-transform: uppercase; }
+
 .title {
   max-width: 500px;
-  margin: 20px auto; }
+  margin: 0 auto;
+  margin-top: 20px;
+  cursor: pointer; }
 
 .start-screen {
   max-width: 500px;
@@ -37,7 +43,8 @@ input {
 
 .cat-thumbnail {
   width: 100px;
-  margin-right: 20px; }
+  margin-right: 20px;
+  cursor: pointer; }
 
 .grid-container {
   display: none;
@@ -58,7 +65,9 @@ input {
   font-size: 1.3rem;
   text-align: center;
   height: 30px;
-  margin-top: 50px; }
+  width: 500px;
+  margin-top: 50px;
+  display: none; }
 
 #bottom-message {
   padding: 10px 0;

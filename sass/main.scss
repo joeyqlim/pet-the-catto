@@ -1,7 +1,3 @@
-// green eye: rgb(5, 114, 5)
-// dark pink nose: #c05a8a
-// orange cat: #dda861
-
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
 
 $color-primary: #d8d8d8;
@@ -43,9 +39,16 @@ input {
   margin-bottom: 10px;
 }
 
+.winning-score {
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
 .title {
   max-width: 500px;
-  margin: 20px auto;
+  margin: 0 auto;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
 .start-screen {
@@ -56,6 +59,7 @@ input {
 .cat-thumbnail {
   width: 100px;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .grid-container {
@@ -80,7 +84,9 @@ input {
   font-size: 1.3rem;
   text-align: center;
   height: 30px;
+  width: 500px;
   margin-top: 50px;
+  display: none;
 }
 
 #bottom-message {
