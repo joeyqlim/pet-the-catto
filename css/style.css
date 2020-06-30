@@ -19,8 +19,28 @@ button {
   border: 3px solid black;
   cursor: pointer; }
 
+h4 {
+  margin: 20px auto; }
+
+input {
+  display: block;
+  padding: 10px;
+  margin-bottom: 10px; }
+
+.title {
+  max-width: 500px;
+  margin: 20px auto; }
+
+.start-screen {
+  max-width: 500px;
+  margin: 20px auto; }
+
+.cat-thumbnail {
+  width: 100px;
+  margin-right: 20px; }
+
 .grid-container {
-  display: grid;
+  display: none;
   grid-template-rows: 6% 8% 48% 10%;
   justify-content: center;
   max-height: 800px; }
@@ -106,7 +126,7 @@ button {
   left: 135px; }
 
 #mouth-left {
-  border-left: 8px solid #323333;
+  border-left: 6px solid #323333;
   height: 50px;
   width: 0;
   transform: rotate(30deg);
@@ -116,7 +136,7 @@ button {
   left: 141px; }
 
 #mouth-right {
-  border-left: 8px solid #323333;
+  border-left: 6px solid #323333;
   height: 50px;
   width: 0;
   transform: rotate(150deg);

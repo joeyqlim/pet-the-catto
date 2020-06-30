@@ -1,3 +1,7 @@
+// green eye: rgb(5, 114, 5)
+// dark pink nose: #c05a8a
+// orange cat: #dda861
+
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
 
 $color-primary: #d8d8d8;
@@ -29,8 +33,33 @@ button {
   cursor: pointer;
 }
 
+h4 {
+  margin: 20px auto;
+}
+
+input {
+  display: block;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.title {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.start-screen {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.cat-thumbnail {
+  width: 100px;
+  margin-right: 20px;
+}
+
 .grid-container {
-  display: grid;
+  display: none;
   grid-template-rows: 6% 8% 48% 10%;
   justify-content: center;
   max-height: 800px;
@@ -133,7 +162,7 @@ button {
 }
 
 #mouth-left {
-  border-left: 8px solid $color-eyes;
+  border-left: 6px solid $color-eyes;
   height: 50px;
   width: 0;
   transform: rotate(30deg);
@@ -145,7 +174,7 @@ button {
 }
 
 #mouth-right {
-  border-left: 8px solid $color-eyes;
+  border-left: 6px solid $color-eyes;
   height: 50px;
   width: 0;
   transform: rotate(150deg);

@@ -1,46 +1,47 @@
 // to do: body, get random cat facts, UX. store player names. 
 
-// keep track of whose turn it is
+// store turn, winning score, names
 let turn = 1;
-
-let winningScore = 2;
+let winningScore = 2; // to change this for different levels
 
 // player objects
 const players = {
   one: {
     score: 0,
+    name: "",
     message() {
-      playersText.innerText = `It's Player 1's turn!`
+      playersText.innerText = `It's ${this.name}'s turn!`
     },
     win() {
       this.score++;
-      playerOneScore.innerText = `Player 1: ${this.score}`;
+      playerOneScore.innerText = `${this.name}: ${this.score}`;
     },
     lose() {
-      gameOver.innerText = `Player 1 made chonky A N G Y`;
-      playerOneScore.innerText = `Player 1: ${this.score}`;
+      gameOver.innerText = `${this.name} made chonky A N G Y`;
+      playerOneScore.innerText = `${this.name}: ${this.score}`;
     },
     resetScore() {
       this.score = 0;
-      playerOneScore.innerText = `Player 1: ${this.score}`;
+      playerOneScore.innerText = `${this.name}: ${this.score}`;
     }
   },
   two: {
     score: 0,
+    name: "",
     message() {
-      playersText.innerText = `It's Player 2's turn!`
+      playersText.innerText = `It's ${this.name}'s turn!`
     },
     win() {
       this.score++;
-      playerTwoScore.innerText = `Player 2: ${this.score}`
+      playerTwoScore.innerText = `${this.name}: ${this.score}`
     },
     lose() {
-      gameOver.innerText = `Player 2 made chonky A N G Y`;
-      playerTwoScore.innerText = `Player 2: ${this.score}`
+      gameOver.innerText = `${this.name} made chonky A N G Y`;
+      playerTwoScore.innerText = `${this.name}: ${this.score}`
     },
     resetScore() {
       this.score = 0;
-      playerTwoScore.innerText = `Player 2: ${this.score}`;
+      playerTwoScore.innerText = `${this.name}: ${this.score}`;
     }
   }
 }
@@ -64,10 +65,57 @@ const rightEar = document.getElementById('right-ear');
 const leftEye = document.getElementById('left-eye');
 const rightEye = document.getElementById('right-eye');
 const nose = document.getElementById('nose');
+const leftMouth = document.getElementById('mouth-left');
+const rightMouth = document.getElementById('mouth-right');
 
-const catParts = [head, leftEar, rightEar, leftEye, rightEye, nose];
+const catParts = [head, leftEar, rightEar, leftEye, rightEye, nose, leftMouth, rightMouth];
 let badPart;
 
+// information about cats functions
+function babyInfo(){
+  Swal.fire({
+    title: 'baby kitty',
+    text: 'So smol. Easily appeased. Just hit 3 points to win! 1 spot to watch out for.',
+    imageUrl: '/img/baby.png',
+    imageWidth: 220,
+    imageHeight: 220,
+    showConfirmButton: false,
+    showCloseButton: true
+  });
+}
+
+function cattoInfo(){
+  Swal.fire({
+    title: 'Catto',
+    text: 'Slightly grompy. Reach 5 points to win himb over. 2 spots to watch out for.',
+    imageUrl: '/img/catto.png',
+    imageWidth: 220,
+    imageHeight: 220,
+    showConfirmButton: false,
+    showCloseButton: true
+  });
+}
+
+function chonkInfo(){
+  Swal.fire({
+    title: 'CHONK',
+    text: 'He is LORGE. Player must hit 10 points to win. 3 spots to watch out for.',
+    imageUrl: '/img/chonk.png',
+    imageWidth: 220,
+    imageHeight: 220,
+    showConfirmButton: false,
+    showCloseButton: true
+  });
+}
+
+// load game function
+function loadGame(){
+  players.one.name = $('#p1-name').val();
+  players.two.name = $('#p2-name').val();
+  $('.start-screen').hide();
+  $('.grid-container').css("display", "grid");
+  $('#intro').show();
+}
 
 // function to attach event listeners to all cat parts and a "woops" class to a random part 
 function randomPart(){
@@ -193,6 +241,9 @@ function showPlayers() {
     turn = 1;
   }
 
+  playerOneScore.innerText = `${players.one.name}: ${players.one.score}`
+  playerTwoScore.innerText = `${players.two.name}: ${players.two.score}`
+
   $('#intro').hide();
   $('#score').show();
 }
@@ -208,7 +259,8 @@ function replayGame() {
 // reset function
 function resetGame() {
   $('#reset-btn').hide();
-  $('#intro').show();
+  $('.start-screen').show();
+  $('.grid-container').css("display", "none");
   $('#score').hide();
   players.one.resetScore();
   players.two.resetScore();

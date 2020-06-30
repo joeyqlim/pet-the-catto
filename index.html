@@ -10,12 +10,37 @@
 </head>
 
 <body>
+  <div class="title">
+    <h1>PET THE CATTO</h1>
+  </div>
+
+  <div class="start-screen">
+    <label for="chonks">Choose your chonk:</label>
+      <select name="chonks" id="chonks">
+        <option value="baby">Baby Kitty</option>
+        <option value="catto">Catto</option>
+        <option value="chonk">CHONK</option>
+      </select>
+      
+      <h4>Click on a chonk to find out more:</h4>
+        <img class="cat-thumbnail" id="baby" src="/img/baby.png" alt="baby kitty" onclick="babyInfo()">
+        <img class="cat-thumbnail" id="catto" src="/img/catto.png" alt="baby kitty" onclick="cattoInfo()">
+        <img class="cat-thumbnail" id="chonk" src="/img/chonk.png" alt="baby kitty" onclick="chonkInfo()">
+
+      <h4>Whomst you be?</h4>
+      <label for="names">Hooman 1:</label>
+        <input type="text" value="Baby Girl Lisa" id="p1-name" placeholder="Baby Girl Lisa">
+      <label for="names">Hooman 2:</label>
+        <input type="text" value="No Neck Ed" id="p2-name" placeholder="No Neck Ed">
+    <button id="load-btn" onclick="loadGame()">Start Game</button>
+    </div>
+
   <div class="grid-container">
     <div class="score-text">
       <div id="score">
         <p><b>Current score</b></p>
-        <p id="p1-score">Player 1: 0</p>
-        <p id="p2-score">Player 2: 0</p>
+        <p id="p1-score"></p>
+        <p id="p2-score"></p>
       </div> 
     </div>
 
