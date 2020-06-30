@@ -67,6 +67,7 @@ button {
   height: 300px;
   background-color: #d8d8d8;
   border-radius: 200px;
+  z-index: 0;
   display: flex;
   flex-flow: row; }
 
@@ -80,7 +81,7 @@ button {
   border-color: white;
   position: relative;
   bottom: 220px;
-  left: 53px; }
+  left: 60px; }
 
 #right-eye {
   background-color: #323333;
@@ -92,16 +93,37 @@ button {
   border-color: white;
   position: relative;
   bottom: 280px;
-  left: 196px; }
+  left: 188px; }
 
 #nose {
   background-color: #dea4d0;
-  height: 25px;
-  width: 32px;
+  height: 30px;
+  width: 36px;
   border-radius: 50%;
+  z-index: 1;
   position: relative;
-  bottom: 256px;
-  left: 138px; }
+  bottom: 253px;
+  left: 135px; }
+
+#mouth-left {
+  border-left: 8px solid #323333;
+  height: 50px;
+  width: 0;
+  transform: rotate(30deg);
+  z-index: 0;
+  position: relative;
+  bottom: 266px;
+  left: 141px; }
+
+#mouth-right {
+  border-left: 8px solid #323333;
+  height: 50px;
+  width: 0;
+  transform: rotate(150deg);
+  z-index: 0;
+  position: relative;
+  bottom: 315px;
+  left: 160px; }
 
 .ears {
   display: flex; }
@@ -119,6 +141,12 @@ button {
     border-right: 60px solid transparent;
     border-bottom: 120px solid #d8d8d8;
     transform: rotate(166deg) translateY(-147px) translateX(-60px); }
+
+#mouth-left:hover {
+  animation: mouthMoveLeft 700ms; }
+
+#mouth-right:hover {
+  animation: mouthMoveRight 700ms; }
 
 #nose:hover {
   animation: shake 700ms; }
@@ -157,3 +185,11 @@ button {
     opacity: 0; }
   to {
     opacity: 1.0; } }
+
+@keyframes mouthMoveLeft {
+  50% {
+    transform: rotate(39deg); } }
+
+@keyframes mouthMoveRight {
+  50% {
+    transform: rotate(140deg); } }
