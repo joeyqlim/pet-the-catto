@@ -90,7 +90,7 @@ function babyInfo(){
   Swal.fire({
     title: 'baby kitty',
     text: 'So smol. Easily appeased. Just hit 3 points to win! 1 spot to watch out for.',
-    imageUrl: '/img/baby.png',
+    imageUrl: './img/baby.png',
     imageWidth: 220,
     showConfirmButton: false,
     showCloseButton: true
@@ -101,7 +101,7 @@ function cattoInfo(){
   Swal.fire({
     title: 'Catto',
     text: 'Slightly grompy. Reach 5 points to win himb over. 2 spots to watch out for.',
-    imageUrl: '/img/catto.png',
+    imageUrl: './img/catto.png',
     imageWidth: 220,
     showConfirmButton: false,
     showCloseButton: true
@@ -112,7 +112,7 @@ function chonkInfo(){
   Swal.fire({
     title: 'CHONK',
     text: 'He is LORGE. Player must hit 10 points to win. 3 spots to watch out for.',
-    imageUrl: '/img/chonk.png',
+    imageUrl: './img/chonk.png',
     imageWidth: 220,
     showConfirmButton: false,
     showCloseButton: true
@@ -201,7 +201,7 @@ function checkPart(e){
       Swal.fire({
         title: `stop mean to kitty, ${players.one.name}!`,
         background: '#fff',
-        imageUrl: 'https://i.imgur.com/cLWmuzO.jpg',
+        imageUrl: './img/stopmean.jpg',
         imageWidth: 300,
         imageHeight: 300,
         showConfirmButton: false,
@@ -217,7 +217,7 @@ function checkPart(e){
       Swal.fire({
         title: `stop mean to kitty, ${players.two.name}!`,
         background: '#fff',
-        imageUrl: 'https://i.imgur.com/cLWmuzO.jpg',
+        imageUrl: './img/stopmean.jpg',
         imageWidth: 300,
         imageHeight: 300,
         showConfirmButton: false,
@@ -233,7 +233,7 @@ function checkPart(e){
       Swal.fire({
         title: `${$('select').val()} thanks ${players.one.name}`,
         background: '#fff',
-        imageUrl: '/img/roller.png',
+        imageUrl: './img/roller.png',
         imageWidth: 220,
         imageHeight: 220,
         showConfirmButton: false,
@@ -243,7 +243,7 @@ function checkPart(e){
       Swal.fire({
         title: `${$('select').val()} thanks ${players.two.name}`,
         background: '#fff',
-        imageUrl: '/img/roller.png',
+        imageUrl: './img/roller.png',
         imageWidth: 220,
         imageHeight: 220,
         showConfirmButton: false,
