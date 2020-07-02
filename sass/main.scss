@@ -6,6 +6,8 @@ $color-background: #40aec7;
 $color-eyes: #323333;
 $color-nose: #dea4d0;
 
+$breakpoint-small: 668px;
+
 *,
 *::after,
 *::before {
@@ -20,13 +22,25 @@ html {
   font-family: 'Rubik', sans-serif;
 }
 
+body{
+  padding: 0 12%;
+}
+
+
 button {
   padding: 6px 22px;
   margin: 8px;
   font-size: 1rem;
   border-radius: 100px;
-  border: 3px solid black;
+  border: 2px solid $color-eyes;
   cursor: pointer;
+  transition: .55s;
+
+  &:hover,
+  &:focus { 
+    border-color: rgba(255, 255, 255, 0.801);
+    transform: scale(1.1);   
+  }
 }
 
 h4 {
@@ -64,34 +78,43 @@ input {
 
 .grid-container {
   display: none;
-  grid-template-rows: 6% 8% 48% 10%;
-  justify-content: center;
-  max-height: 800px;
+  grid-template-rows: 6% 8% 48%;
+  justify-content: left;
+  max-height: 600px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding-bottom: 0;
+}
+
+#top-message {
+  font-size: 1.5rem;
+  text-align: center;
+  height: 30px;
+  max-width: 500px;
+  margin-top: 60px;
+  display: none;
+  text-transform: uppercase;
+  padding-left: 100px;
 }
 
 #score {
   display: none;
+  padding: 10px auto;
+  width: 100px;
 }
 
 .score-text {
   font-size: 1rem;
-  padding: 10px 0;
   text-align: left;
   margin-bottom: 450px;
-}
-
-#top-message {
-  font-size: 1.3rem;
-  text-align: center;
-  height: 30px;
-  width: 500px;
-  margin-top: 50px;
-  display: none;
+  width: 100px;
 }
 
 #bottom-message {
   padding: 10px 0;
   text-align: center;
+  margin-top: 100px;
+  padding-left: 100px;
 }
 
 .game-over {
@@ -104,6 +127,7 @@ input {
   margin: 0 auto;
   margin-bottom: -100px;
   margin-top: -50px;
+  padding-left: 100px;
 }
 
 #replay-btn {
@@ -139,6 +163,10 @@ input {
   position: relative;
   bottom: 220px;
   left: 60px;
+
+  &:hover {
+    animation: blink 100ms;
+  }
 }
 
 #right-eye{
@@ -153,6 +181,10 @@ input {
   position: relative;
   bottom: 280px;
   left: 188px;
+
+  &:hover {
+    animation: blink 100ms;
+  }
 }
 
 #nose {
@@ -165,6 +197,10 @@ input {
   position: relative;
   bottom: 253px;
   left: 135px;
+
+  &:hover {
+    animation: shake 700ms;
+  }
 }
 
 #mouth-left {
@@ -177,6 +213,10 @@ input {
   position: relative;
   bottom: 266px;
   left: 141px;
+
+  &:hover {
+    animation: mouthMoveLeft 700ms;
+  }
 }
 
 #mouth-right {
@@ -189,6 +229,10 @@ input {
   position: relative;
   bottom: 315px;
   left: 160px;
+
+  &:hover {
+    animation: mouthMoveRight 700ms;
+  }
 }
 
 .ears {
@@ -201,6 +245,10 @@ input {
 
     border-bottom: 120px solid $color-primary;
     transform: rotate(319deg) translateY(42px) translateX(-87px);
+
+    &:hover {
+      animation: wiggleLeft 700ms;
+    }
   }
   
   #right-ear {
@@ -212,31 +260,11 @@ input {
     border-bottom: 120px solid $color-primary;
   
     transform: rotate(166deg) translateY(-147px) translateX(-60px);
+
+    &:hover {
+      animation: wiggleRight 700ms;
+    }
   }
-}
-
-#mouth-left:hover {
-  animation: mouthMoveLeft 700ms;
-}
-
-#mouth-right:hover {
-  animation: mouthMoveRight 700ms;
-}
-
-#nose:hover {
-  animation: shake 700ms;
-}
-
-#left-ear:hover {
-  animation: wiggleLeft 700ms;
-}
-
-#right-ear:hover {
-  animation: wiggleRight 700ms;
-}
-
-#left-eye:hover, #right-eye:hover {
-  animation: blink 100ms;
 }
 
 @keyframes shake {
@@ -287,3 +315,8 @@ input {
   }
 }
 
+@media (max-width: $breakpoint-small) {
+  #top-message, #kitty, #bottom-message {
+    padding-left: 12%;
+  }
+}

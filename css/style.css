@@ -11,13 +11,20 @@ html {
   background-color: #40aec7;
   font-family: 'Rubik', sans-serif; }
 
+body {
+  padding: 0 12%; }
+
 button {
   padding: 6px 22px;
   margin: 8px;
   font-size: 1rem;
   border-radius: 100px;
-  border: 3px solid black;
-  cursor: pointer; }
+  border: 2px solid #323333;
+  cursor: pointer;
+  transition: .55s; }
+  button:hover, button:focus {
+    border-color: rgba(255, 255, 255, 0.801);
+    transform: scale(1.1); }
 
 h4 {
   margin: 20px auto; }
@@ -48,30 +55,39 @@ input {
 
 .grid-container {
   display: none;
-  grid-template-rows: 6% 8% 48% 10%;
-  justify-content: center;
-  max-height: 800px; }
+  grid-template-rows: 6% 8% 48%;
+  justify-content: left;
+  max-height: 600px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding-bottom: 0; }
+
+#top-message {
+  font-size: 1.5rem;
+  text-align: center;
+  height: 30px;
+  max-width: 500px;
+  margin-top: 60px;
+  display: none;
+  text-transform: uppercase;
+  padding-left: 100px; }
 
 #score {
-  display: none; }
+  display: none;
+  padding: 10px auto;
+  width: 100px; }
 
 .score-text {
   font-size: 1rem;
-  padding: 10px 0;
   text-align: left;
-  margin-bottom: 450px; }
-
-#top-message {
-  font-size: 1.3rem;
-  text-align: center;
-  height: 30px;
-  width: 500px;
-  margin-top: 50px;
-  display: none; }
+  margin-bottom: 450px;
+  width: 100px; }
 
 #bottom-message {
   padding: 10px 0;
-  text-align: center; }
+  text-align: center;
+  margin-top: 100px;
+  padding-left: 100px; }
 
 .game-over {
   font-size: 1.3rem; }
@@ -81,7 +97,8 @@ input {
   max-width: 700px;
   margin: 0 auto;
   margin-bottom: -100px;
-  margin-top: -50px; }
+  margin-top: -50px;
+  padding-left: 100px; }
 
 #replay-btn {
   display: none;
@@ -111,6 +128,8 @@ input {
   position: relative;
   bottom: 220px;
   left: 60px; }
+  #left-eye:hover {
+    animation: blink 100ms; }
 
 #right-eye {
   background-color: #323333;
@@ -123,6 +142,8 @@ input {
   position: relative;
   bottom: 280px;
   left: 188px; }
+  #right-eye:hover {
+    animation: blink 100ms; }
 
 #nose {
   background-color: #dea4d0;
@@ -133,6 +154,8 @@ input {
   position: relative;
   bottom: 253px;
   left: 135px; }
+  #nose:hover {
+    animation: shake 700ms; }
 
 #mouth-left {
   border-left: 6px solid #323333;
@@ -143,6 +166,8 @@ input {
   position: relative;
   bottom: 266px;
   left: 141px; }
+  #mouth-left:hover {
+    animation: mouthMoveLeft 700ms; }
 
 #mouth-right {
   border-left: 6px solid #323333;
@@ -153,6 +178,8 @@ input {
   position: relative;
   bottom: 315px;
   left: 160px; }
+  #mouth-right:hover {
+    animation: mouthMoveRight 700ms; }
 
 .ears {
   display: flex; }
@@ -163,6 +190,8 @@ input {
     border-right: 60px solid transparent;
     border-bottom: 120px solid #d8d8d8;
     transform: rotate(319deg) translateY(42px) translateX(-87px); }
+    .ears #left-ear:hover {
+      animation: wiggleLeft 700ms; }
   .ears #right-ear {
     width: 0;
     height: 0;
@@ -170,24 +199,8 @@ input {
     border-right: 60px solid transparent;
     border-bottom: 120px solid #d8d8d8;
     transform: rotate(166deg) translateY(-147px) translateX(-60px); }
-
-#mouth-left:hover {
-  animation: mouthMoveLeft 700ms; }
-
-#mouth-right:hover {
-  animation: mouthMoveRight 700ms; }
-
-#nose:hover {
-  animation: shake 700ms; }
-
-#left-ear:hover {
-  animation: wiggleLeft 700ms; }
-
-#right-ear:hover {
-  animation: wiggleRight 700ms; }
-
-#left-eye:hover, #right-eye:hover {
-  animation: blink 100ms; }
+    .ears #right-ear:hover {
+      animation: wiggleRight 700ms; }
 
 @keyframes shake {
   10%, 90% {
@@ -222,3 +235,7 @@ input {
 @keyframes mouthMoveRight {
   50% {
     transform: rotate(140deg); } }
+
+@media (max-width: 668px) {
+  #top-message, #kitty, #bottom-message {
+    padding-left: 12%; } }

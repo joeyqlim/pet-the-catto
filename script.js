@@ -1,5 +1,3 @@
-// to do: body, get random cat facts, UX. store player names. 
-
 // store turn, winning score
 let turn = 1;
 let winningScore; // to change this for different levels
@@ -75,6 +73,24 @@ const rightMouth = document.getElementById('mouth-right');
 const catParts = [head, leftEar, rightEar, leftEye, rightEye, nose, leftMouth, rightMouth];
 let badPart;
 
+catParts.forEach((part) => {
+  part.classList.add('cat-part')
+})
+
+// visual feedback for each click
+// use foreach on each cat part + player text so that bounces on click
+$(".cat-part").click(function() {
+  doBounce($('#kitty'), 3, '7px', 100);   
+  doBounce($('#players'), 3, '7px', 100);   
+});
+
+function doBounce(element, times, distance, speed) {
+  for(i = 0; i < times; i++) {
+      element.animate({marginTop: '-='+distance},speed)
+          .animate({marginTop: '+='+distance},speed);
+  }        
+}
+
 // click title to reload page
 $('.title').click(function() {
   location.reload();
@@ -85,8 +101,12 @@ $("input[type='text']").on("click", function () {
   $(this).select();
 });
 
-// information about cats functions
-function babyInfo(){
+// information about cats functions --> refactor into one function
+
+document.getElementById('baby').addEventListener('click', function(e) {babyInfo(e)})
+
+function babyInfo(e){
+  console.log(e.target);
   Swal.fire({
     title: 'baby kitty',
     text: 'So smol. Easily appeased. Just hit 3 points to win! 1 spot to watch out for.',
@@ -120,6 +140,15 @@ function chonkInfo(){
 }
 
 // change cat colour function
+function greyCat() {
+  $('#left-ear').css("border-bottom", "120px solid #d8d8d8");
+  $('#right-ear').css("border-bottom", "120px solid #d8d8d8");
+  $('#head').css("background-color", "#d8d8d8");
+  $('#left-eye').css("border-color", "white");
+  $('#right-eye').css("border-color", "white");
+  $('#nose').css("background-color", "#dea4d0");
+}
+
 function blackCat() {
   $('#left-ear').css("border-bottom", "120px solid black");
   $('#right-ear').css("border-bottom", "120px solid black");
@@ -132,6 +161,8 @@ function blackCat() {
 function orangeCat() {
   $('#left-ear').css("border-bottom", "120px solid #dda861");
   $('#right-ear').css("border-bottom", "120px solid #dda861");
+  $('#left-eye').css("border-color", "white");
+  $('#right-eye').css("border-color", "white");
   $('#head').css("background-color", "#dda861");
   $('#nose').css("background-color", "#323333");
 }
@@ -146,6 +177,7 @@ function loadGame(){
   // set difficulty level
   if ($('select').val() === "baby"){
     randomPart();
+    greyCat();
     winningScore = 3;
   } else if ($('select').val() === "catto"){
     twoRandomParts();
@@ -157,12 +189,12 @@ function loadGame(){
     winningScore = 10;
   }
   // display the players turn text
-  $('#top-message').show();
   showPlayers();
   scoreToWin.innerText = `Score to win: ${winningScore}`
 }
 
 // function to attach event listeners to all cat parts and a "woops" class to a random part 
+// one randompart function that takes in how many times to run
 function randomPart(){
   index = Math.floor(Math.random() * catParts.length);
   badPart = catParts[index]; 
@@ -298,8 +330,10 @@ function showPlayers() {
   playerOneScore.innerText = `${players.one.name}: ${players.one.score}`
   playerTwoScore.innerText = `${players.two.name}: ${players.two.score}`
 
-  $('#intro').hide();
+  $('#top-message').show();
+  $('#players').show();
   $('#score').show();
+  $('#top-message').css("visibility", "visible");
 }
 
 // replay function
