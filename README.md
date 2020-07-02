@@ -38,3 +38,4 @@ Midway through the project, I decided to incorporate jQuery into my project as I
 
 * Catspeak language inspired by <a href="https://www.facebook.com/groups/133018060894811/">THIS CAT IS C H O N K Y</a>
 * Lovely cat drawings by <a href="https://www.instagram.com/mofu_sand/?hl=en">@mofu_sand</a>
+* Background created with <a href="https://www.svgbackgrounds.com/">SVG Backgrounds</a>

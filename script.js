@@ -45,6 +45,7 @@ const players = {
 }
 
 // ui elements
+const kittyDiv = document.getElementById('kitty'); // used for debugging
 const playersText = document.getElementById('players');
 const introText = document.getElementById('intro');
 const replayBtn = document.getElementById('replay-btn');
@@ -104,42 +105,38 @@ $("input[type='text']").on("click", function () {
   $(this).select();
 });
 
-// information about cats functions --> refactor into one function
+// function to show information about cats
+$('.cat-thumbnail').click(function(e) {catInfo(e)})
 
-document.getElementById('baby').addEventListener('click', function(e) {babyInfo(e)})
-
-function babyInfo(e){
-  console.log(e.target);
-  Swal.fire({
-    title: 'baby kitty',
-    text: 'So smol. Easily appeased. Just hit 3 points to win! 1 spot to watch out for.',
-    imageUrl: './img/baby.png',
-    imageWidth: 220,
-    showConfirmButton: false,
-    showCloseButton: true
-  });
-}
-
-function cattoInfo(){
-  Swal.fire({
-    title: 'Catto',
-    text: 'Slightly grompy. Reach 5 points to win himb over. 2 spots to watch out for.',
-    imageUrl: './img/catto.png',
-    imageWidth: 220,
-    showConfirmButton: false,
-    showCloseButton: true
-  });
-}
-
-function chonkInfo(){
-  Swal.fire({
-    title: 'CHONK',
-    text: 'He is LORGE. Player must hit 10 points to win. 3 spots to watch out for.',
-    imageUrl: './img/chonk.png',
-    imageWidth: 220,
-    showConfirmButton: false,
-    showCloseButton: true
-  });
+function catInfo(e){
+  if (e.target.id === "baby") {
+    Swal.fire({
+      title: 'baby kitty',
+      text: 'So smol. Easily appeased. Just hit 3 points to win! 1 spot to watch out for.',
+      imageUrl: './img/baby.png',
+      imageWidth: 220,
+      showConfirmButton: false,
+      showCloseButton: true
+    });
+  } else if (e.target.id === "catto") {
+    Swal.fire({
+      title: 'Catto',
+      text: 'Slightly grompy. Reach 5 points to win himb over. 2 spots to watch out for.',
+      imageUrl: './img/catto.png',
+      imageWidth: 220,
+      showConfirmButton: false,
+      showCloseButton: true
+    });
+  } else if (e.target.id === "chonk") {
+    Swal.fire({
+      title: 'CHONK',
+      text: 'He is LORGE. Player must hit 10 points to win. 3 spots to watch out for.',
+      imageUrl: './img/chonk.png',
+      imageWidth: 220,
+      showConfirmButton: false,
+      showCloseButton: true
+    });
+  }
 }
 
 // change cat colour function
@@ -179,15 +176,15 @@ function loadGame(){
 
   // set difficulty level
   if ($('select').val() === "baby kitty"){
-    randomPart();
+    randomPart(1);
     greyCat();
     winningScore = 3;
   } else if ($('select').val() === "catto"){
-    twoRandomParts();
+    randomPart(2);
     blackCat();
     winningScore = 5;
   } else if ($('select').val() === "chonk"){
-    threeRandomParts();
+    randomPart(3);
     orangeCat();
     winningScore = 10;
   }
@@ -197,26 +194,40 @@ function loadGame(){
 }
 
 // function to attach event listeners to all cat parts and a "woops" class to a random part 
-// one randompart function that takes in how many times to run
-function randomPart(){
-  index = Math.floor(Math.random() * catParts.length);
-  badPart = catParts[index]; 
-  badPart.classList.add("woops");
+function randomPart(num){
+  let numbers = [0, 1, 2, 3, 4, 5, 6, 7];
+  let index = Math.floor(Math.random() * numbers.length);
+  let numOne = numbers[index];
+  numbers.splice(numbers.indexOf(numOne), 1);
+
+  let indexTwo = Math.floor(Math.random() * numbers.length);
+  let numTwo = numbers[indexTwo];
+  numbers.splice(numbers.indexOf(numTwo), 1);
+
+  let indexThree = Math.floor(Math.random() * numbers.length);
+  let numThree = numbers[indexThree];
+  numbers.splice(numbers.indexOf(numThree), 1);
+  
+  switch(num) {
+    case 1:
+      catParts[numOne].classList.add("woops");
+      break;
+    case 2:
+      catParts[numOne].classList.add("woops");
+      catParts[numTwo].classList.add("woops");
+      break;
+    case 3:
+      catParts[numOne].classList.add("woops");
+      catParts[numTwo].classList.add("woops");
+      catParts[numThree].classList.add("woops");
+      break;
+    default:
+      catParts[numOne].classList.add("woops");
+  }
   
   catParts.forEach((part) => {
     part.addEventListener('click', checkPart)
   });
-}
-
-function twoRandomParts() {
-  randomPart();
-  randomPart();
-}
-
-function threeRandomParts() {
-  randomPart();
-  randomPart();
-  randomPart();
 }
 
 // function to check if clicked part contains woops class
@@ -348,14 +359,18 @@ function showPlayers() {
 
 // replay function
 function replayGame() {
+  catParts.forEach((part) => {
+    part.classList.remove('woops')
+  })
+
   turn = 1;
 
   if ($('select').val() === "baby kitty"){
-    randomPart();
+    randomPart(1);
   } else if ($('select').val() === "catto"){
-    twoRandomParts();
+    randomPart(2);
   } else if ($('select').val() === "chonk"){
-    threeRandomParts();
+    randomPart(3);
   }
 
   $('#replay-btn').hide();
@@ -368,6 +383,10 @@ function replayGame() {
 
 // reset function
 function resetGame() {
+  catParts.forEach((part) => {
+    part.classList.remove('woops')
+  })
+
   $('#reset-btn').hide();
   $('.start-screen').show();
   $('.grid-container').css("display", "none");
