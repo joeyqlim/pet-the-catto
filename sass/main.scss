@@ -51,6 +51,12 @@ input {
   display: block;
   padding: 10px;
   margin-bottom: 10px;
+  font-family: 'Rubik', sans-serif;
+}
+
+select {
+  padding: 7px 3px;
+  font-family: 'Rubik', sans-serif;
 }
 
 .winning-score {
@@ -70,10 +76,19 @@ input {
   margin: 20px auto;
 }
 
+.img-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
 .cat-thumbnail {
-  width: 100px;
+  width: 145px;
   margin-right: 20px;
   cursor: pointer;
+
+  &:hover {
+    animation: shake 1s;
+  }
 }
 
 .grid-container {
@@ -318,5 +333,9 @@ input {
 @media (max-width: $breakpoint-small) {
   #top-message, #kitty, #bottom-message {
     padding-left: 12%;
+  }
+  .img-wrapper {
+    flex-flow: column;
+    margin: 20px;
   }
 }

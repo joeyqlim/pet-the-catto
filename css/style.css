@@ -32,7 +32,12 @@ h4 {
 input {
   display: block;
   padding: 10px;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  font-family: 'Rubik', sans-serif; }
+
+select {
+  padding: 7px 3px;
+  font-family: 'Rubik', sans-serif; }
 
 .winning-score {
   margin-top: 10px;
@@ -48,10 +53,16 @@ input {
   max-width: 500px;
   margin: 20px auto; }
 
+.img-wrapper {
+  display: flex;
+  flex-flow: row wrap; }
+
 .cat-thumbnail {
-  width: 100px;
+  width: 145px;
   margin-right: 20px;
   cursor: pointer; }
+  .cat-thumbnail:hover {
+    animation: shake 1s; }
 
 .grid-container {
   display: none;
@@ -238,4 +249,7 @@ input {
 
 @media (max-width: 668px) {
   #top-message, #kitty, #bottom-message {
-    padding-left: 12%; } }
+    padding-left: 12%; }
+  .img-wrapper {
+    flex-flow: column;
+    margin: 20px; } }
