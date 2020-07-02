@@ -60,6 +60,10 @@ const scoreToWin = document.createElement('p');
 scoreToWin.classList.add('winning-score');
 scoreBox.appendChild(scoreToWin);
 
+const meow = new Audio('./audio/meow.mp3');
+const yowl = new Audio('./audio/yowl.mp3');
+const victory = new Audio('./audio/victory.mp3');
+
 // cat parts
 const head = document.getElementById('head'); 
 const leftEar = document.getElementById('left-ear');
@@ -73,12 +77,11 @@ const rightMouth = document.getElementById('mouth-right');
 const catParts = [head, leftEar, rightEar, leftEye, rightEye, nose, leftMouth, rightMouth];
 let badPart;
 
+// visual feedback for each click
 catParts.forEach((part) => {
   part.classList.add('cat-part')
 })
 
-// visual feedback for each click
-// use foreach on each cat part + player text so that bounces on click
 $(".cat-part").click(function() {
   doBounce($('#kitty'), 3, '7px', 100);   
   doBounce($('#players'), 3, '7px', 100);   
@@ -175,7 +178,7 @@ function loadGame(){
   $('.grid-container').css("display", "grid");
 
   // set difficulty level
-  if ($('select').val() === "baby"){
+  if ($('select').val() === "baby kitty"){
     randomPart();
     greyCat();
     winningScore = 3;
@@ -218,16 +221,20 @@ function threeRandomParts() {
 
 // function to check if clicked part contains woops class
 function checkPart(e){
-
   showPlayers();
 
   let selected = e.target;
 
+  if (!selected.classList.contains("woops")) {
+    meow.play();
+    }
+  
   selected.removeEventListener('click', checkPart);
   selected.addEventListener('click', alreadyClicked);
 
   if (selected.classList.contains("woops")) {
     if (turn === 1) {
+      yowl.play();
       players.one.lose();
       players.two.win();
       Swal.fire({
@@ -244,6 +251,7 @@ function checkPart(e){
       $('#top-message').css("visibility", "hidden");
 
     } else {
+      yowl.play();
       players.one.win();
       players.two.lose();
       Swal.fire({
@@ -262,8 +270,9 @@ function checkPart(e){
     }
 
     if (players.one.score === winningScore) {
+      victory.play();
       Swal.fire({
-        title: `${$('select').val()} thanks ${players.one.name}`,
+        title: `😻 ${$('select').val()} loves ${players.one.name} 💖`,
         background: '#fff',
         imageUrl: './img/roller.png',
         imageWidth: 220,
@@ -272,8 +281,9 @@ function checkPart(e){
         showCloseButton: true
       });
     } else if (players.two.score === winningScore) {
+      victory.play();
       Swal.fire({
-        title: `${$('select').val()} thanks ${players.two.name}`,
+        title: `😻 ${$('select').val()} loves ${players.two.name} 💖`,
         background: '#fff',
         imageUrl: './img/roller.png',
         imageWidth: 220,
@@ -340,7 +350,7 @@ function showPlayers() {
 function replayGame() {
   turn = 1;
 
-  if ($('select').val() === "baby"){
+  if ($('select').val() === "baby kitty"){
     randomPart();
   } else if ($('select').val() === "catto"){
     twoRandomParts();
