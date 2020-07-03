@@ -10,6 +10,11 @@ HTML, CSS, JavaScript, jQuery, SASS
 
 A two player turn-based game where the objective is to avoid upsetting the cat.
 
+### Screenshots
+
+<img src="https://i.imgur.com/k0svxmp.png" />
+<img src="https://i.imgur.com/N0L6Bl5.png" />
+
 
 ## Gameplay
 
@@ -39,3 +44,5 @@ Midway through the project, I decided to incorporate jQuery into my project as I
 * Catspeak language inspired by <a href="https://www.facebook.com/groups/133018060894811/">THIS CAT IS C H O N K Y</a>
 * Lovely cat drawings by <a href="https://www.instagram.com/mofu_sand/?hl=en">@mofu_sand</a>
 * Background created with <a href="https://www.svgbackgrounds.com/">SVG Backgrounds</a>
+* Victory Fanfare by Nobuo Uematsu (Final Fantasy)
+* Default player names inspired by TLC's 90 Day Fiance
