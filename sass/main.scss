@@ -5,6 +5,7 @@ $color-eyes: #323333;
 $color-nose: #dea4d0;
 
 $breakpoint-small: 668px;
+$breakpoint-xs: 460px;
 
 *,
 *::after,
@@ -69,6 +70,10 @@ select {
   margin-top: 20px;
   cursor: pointer;
   font-size: 1.5rem;
+  
+  &:hover {
+    color: rgba(7, 7, 7, 0.822);
+  }
 }
 
 .start-screen {
@@ -333,6 +338,19 @@ select {
 @media (max-width: $breakpoint-small) {
   #top-message, #kitty, #bottom-message {
     padding-left: 12%;
+  }
+  .img-wrapper {
+    flex-flow: column;
+    margin: 20px;
+  }
+}
+
+@media (max-width: 460px) {
+  html {
+    transform: scale(0.8);
+  }
+  #top-message, #kitty, #bottom-message {
+    padding-left: 0;
   }
   .img-wrapper {
     flex-flow: column;

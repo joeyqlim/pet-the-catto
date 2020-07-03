@@ -256,7 +256,7 @@ function checkPart(e){
         imageHeight: 300,
         showConfirmButton: false,
         backdrop: true,
-        timer: 1300,
+        timer: 1500,
       });
 
       $('#top-message').css("visibility", "hidden");
@@ -273,7 +273,7 @@ function checkPart(e){
         imageHeight: 300,
         showConfirmButton: false,
         backdrop: true,
-        timer: 1300,
+        timer: 1500,
       });
 
       $('#top-message').css("visibility", "hidden");
@@ -319,9 +319,9 @@ function checkPart(e){
 // already clicked function
 function alreadyClicked() {
   Swal.fire({
-    title: 'Kitty wants to be petted somewhere else!',
+    title: `${$('select').val()} wants to be petted somewhere else!`,
     background: '#fff',
-    timer: 800,
+    timer: 1100,
     showConfirmButton: false,
     showCloseButton: true
   });

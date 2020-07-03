@@ -51,6 +51,8 @@ select {
   margin-top: 20px;
   cursor: pointer;
   font-size: 1.5rem; }
+  .title:hover {
+    color: rgba(7, 7, 7, 0.822); }
 
 .start-screen {
   max-width: 500px;
@@ -253,6 +255,15 @@ select {
 @media (max-width: 668px) {
   #top-message, #kitty, #bottom-message {
     padding-left: 12%; }
+  .img-wrapper {
+    flex-flow: column;
+    margin: 20px; } }
+
+@media (max-width: 460px) {
+  html {
+    transform: scale(0.8); }
+  #top-message, #kitty, #bottom-message {
+    padding-left: 0; }
   .img-wrapper {
     flex-flow: column;
     margin: 20px; } }
